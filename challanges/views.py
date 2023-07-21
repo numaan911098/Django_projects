@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 
 
@@ -24,10 +25,10 @@ def index(request):
     months = list(months_dict.keys())
     # for month in months:
     #     capitilized_month = month.capitalize()
-    # month_path = reverse('month-challenge', args=[month])
+    #     month_path = reverse('month-challenge', args=[month])
     #     items += f"<li><a href=\"{month_path}\">{capitilized_month}</li>"
     # response_data = f"<ul>{items}</ul>"
-    return render(request, 'challanges/index.html',{'months':months, "path": month})
+    return render(request, 'challanges/index.html',{'months':months, })
 
 
 
@@ -45,4 +46,5 @@ def monthlychallenges(request, month):
         challenge_text = months_dict[month]
         return render(request, 'challanges/challenges.html',{'challenges':challenge_text,'month':month})
     except:
-        return HttpResponseNotFound("not found")
+        respose = render_to_string("404.html")
+        return HttpResponseNotFound(respose)

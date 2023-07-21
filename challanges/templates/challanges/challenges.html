@@ -4,7 +4,9 @@
     {{month| title}}
 {% endblock page_title %}
 
-{{{% block content %}
+{% block content %}
+    {% include "challanges/includes/header.html" %}
     <h1> {{challenges}} </h1>
     <p>In {{month| title}}</p>
-{% endblock content %}}}
+{% endblock content %}
+
