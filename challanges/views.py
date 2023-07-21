@@ -20,14 +20,14 @@ months_dict = {
 }
 
 def index(request):
-    items = ""
+    # items = ""
     months = list(months_dict.keys())
-    for month in months:
-        capitilized_month = month.capitalize()
-        month_path = reverse('month-challenge', args=[month])
-        items += f"<li><a href=\"{month_path}\">{capitilized_month}</li>"
-    response_data = f"<ul>{items}</ul>"
-    return HttpResponse(response_data)
+    # for month in months:
+    #     capitilized_month = month.capitalize()
+    # month_path = reverse('month-challenge', args=[month])
+    #     items += f"<li><a href=\"{month_path}\">{capitilized_month}</li>"
+    # response_data = f"<ul>{items}</ul>"
+    return render(request, 'challanges/index.html',{'months':months, "path": month})
 
 
 
@@ -43,7 +43,6 @@ def monthlychallengesbynum(request, month):
 def monthlychallenges(request, month):
     try:
         challenge_text = months_dict[month]
-        response = f"<h1>{challenge_text}</h1>"
-        return HttpResponse(f"{response} in this month")
+        return render(request, 'challanges/challenges.html',{'challenges':challenge_text,'month':month})
     except:
         return HttpResponseNotFound("not found")

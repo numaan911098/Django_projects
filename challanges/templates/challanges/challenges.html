@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{month| title}}
+{% endblock page_title %}
+
+{{{% block content %}
+    <h1> {{challenges}} </h1>
+    <p>In {{month| title}}</p>
+{% endblock content %}}}

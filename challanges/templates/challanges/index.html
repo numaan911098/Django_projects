@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    {% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
+  </head>
+  <body>
+    <ul>
+        {%for month in months%}
+            <li> <a href="{{month}}" >{{ month| title }}</a> </li>
+            
+        {% endfor %}
+            
+    </ul>
+
+	{% comment %} <script src="index.js"></script> {% endcomment %}
+  </body>
+</html>
